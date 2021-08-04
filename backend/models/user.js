@@ -50,11 +50,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    validate(value) {
-      if (!validator.isPostalCode(value)) {
-        throw new Error(`Postal code is invalid: ${value}`);
-      }
-    },
   },
 
   email: {
