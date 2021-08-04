@@ -27,6 +27,7 @@ export default function CustomInput(props) {
     error,
     success,
     onChange,
+    required,
   } = props;
 
   const labelClasses = classNames({
@@ -56,6 +57,7 @@ export default function CustomInput(props) {
         </InputLabel>
       ) : null}
       <Input
+        required={required}
         type={type}
         value={value}
         onChange={onChange}

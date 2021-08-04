@@ -59,12 +59,16 @@ export default function Register() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const classes = useStyles();
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <Card>
               <CardHeader color="primary">
                 <h4 className={classes.cardTitleWhite}>Register</h4>
@@ -88,6 +92,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={3}>
                     <CustomInput
+                      required
                       labelText="Username"
                       id="username"
                       formControlProps={{
@@ -97,6 +102,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="Email address"
                       id="email-address"
                       type="email"
@@ -109,6 +115,7 @@ export default function Register() {
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
+                      required
                       labelText="First Name"
                       id="first-name"
                       formControlProps={{
@@ -118,6 +125,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
+                      required
                       labelText="Last Name"
                       id="last-name"
                       formControlProps={{
@@ -129,6 +137,7 @@ export default function Register() {
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="City"
                       id="city"
                       formControlProps={{
@@ -138,6 +147,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="Country"
                       id="country"
                       formControlProps={{
@@ -147,6 +157,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="Postal Code"
                       id="postal-code"
                       formControlProps={{
@@ -158,6 +169,7 @@ export default function Register() {
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="Password"
                       id="password"
                       type="password"
@@ -170,6 +182,7 @@ export default function Register() {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
+                      required
                       labelText="Verify Password"
                       id="verifyPassword"
                       type="password"
