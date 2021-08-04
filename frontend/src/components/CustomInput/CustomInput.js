@@ -21,10 +21,12 @@ export default function CustomInput(props) {
     labelText,
     id,
     type,
+    value,
     labelProps,
     inputProps,
     error,
     success,
+    onChange,
   } = props;
 
   const labelClasses = classNames({
@@ -55,6 +57,8 @@ export default function CustomInput(props) {
       ) : null}
       <Input
         type={type}
+        value={value}
+        onChange={onChange}
         classes={{
           root: marginTop,
           disabled: classes.disabled,
