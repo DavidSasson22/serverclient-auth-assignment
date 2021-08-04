@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -198,7 +197,7 @@ export default function AdminNavbarLinks() {
                       onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
-                      <Link to="/register">Register</Link>
+                      Register
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
@@ -210,7 +209,7 @@ export default function AdminNavbarLinks() {
                       onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
-                      <Link to="/admin/user">Profile</Link>
+                      Profile
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
