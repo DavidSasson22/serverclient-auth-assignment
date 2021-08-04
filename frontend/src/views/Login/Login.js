@@ -36,7 +36,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function Register() {
+export default function Login() {
   const classes = useStyles();
   return (
     <div>
@@ -132,19 +132,6 @@ export default function Register() {
                 </GridItem>
               </GridContainer>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Password"
-                    id="password"
-                    type="password"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <br />
-              <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
                   <CustomInput
@@ -155,7 +142,7 @@ export default function Register() {
                     }}
                     inputProps={{
                       multiline: true,
-                      rows: 3,
+                      rows: 5,
                     }}
                   />
                 </GridItem>

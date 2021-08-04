@@ -19,6 +19,7 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import BubbleChart from "@material-ui/icons/BubbleChart";
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -29,6 +30,7 @@ import Language from "@material-ui/icons/Language";
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import Register from "views/Register/Register.js";
+import Login from "views/Login/Login.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
 import Icons from "views/Icons/Icons.js";
@@ -45,6 +47,14 @@ const dashboardRoutes = [
     rtlName: "הרשמה",
     icon: AssignmentIndIcon,
     component: Register,
+    layout: "/admin",
+  },
+  {
+    path: "/login",
+    name: "Login",
+    rtlName: "התחברות",
+    icon: VpnKeyIcon,
+    component: Login,
     layout: "/admin",
   },
   {
