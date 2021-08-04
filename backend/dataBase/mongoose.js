@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 const connection = process.env.db_url;
+console.log(connection);
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
