@@ -210,7 +210,7 @@ export default function AdminNavbarLinks() {
                       onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
-                      Profile
+                      <Link to="/admin/user">Profile</Link>
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
