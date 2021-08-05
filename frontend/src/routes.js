@@ -40,6 +40,7 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
+import LogOut from "views/Logout/LogOut";
 
 // export const logInOutDisplayer = (isLogedUser) => {
 //   if (isLogedUser) {
@@ -81,7 +82,7 @@ export const logInOutDisplayer = (isLogedUser) => {
         name: "Log out",
         rtlName: "התנתקות",
         icon: AssignmentIndIcon,
-        component: Register,
+        component: LogOut,
         layout: "/admin",
       },
       {

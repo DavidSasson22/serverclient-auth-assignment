@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userObjectState } from "../../atoms/atoms.js";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 // @material-ui/core components
@@ -48,18 +50,30 @@ export default function Login() {
   const [email, setUserEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [userData, setUserData] = useRecoilState(userObjectState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(false);
     try {
-      const token = await axios.post("http://localhost:5000/api/users/login", {
+      const data = await axios.post("http://localhost:5000/api/users/login", {
         email,
         password,
       });
       setLoading(false);
-      console.log(token);
+      console.log(data);
+      setUserData({
+        userName: data.data.user.userName,
+        firstName: data.data.user.firstName,
+        lastName: data.data.user.lastName,
+        city: data.data.user.city,
+        country: data.data.user.country,
+        postalCode: data.data.user.postalCode,
+        email: data.data.user.email,
+        about: data.data.user.about,
+        token: data.data.token,
+      });
       history.push("http://localhost:3000/admin/dashboard");
     } catch (e) {
       setLoading(false);

@@ -41,7 +41,6 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
   const userData = useRecoilValue(userDataAtom);
-  console.log(userData);
 
   const classes = useStyles();
   return (
