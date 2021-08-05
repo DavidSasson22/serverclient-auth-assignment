@@ -195,6 +195,7 @@ export default function Register() {
                       labelText="Password"
                       id="password"
                       type="password"
+                      minlength="7"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       formControlProps={{
@@ -208,6 +209,7 @@ export default function Register() {
                       labelText="Verify Password"
                       id="verifyPassword"
                       type="password"
+                      minlength="7"
                       value={passwordVerify}
                       onChange={(e) => setPasswordVerify(e.target.value)}
                       formControlProps={{
