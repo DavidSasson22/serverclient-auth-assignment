@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userObjectState as userDataAtom } from "../../atoms/atoms.js";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,7 +27,8 @@ import styles from "assets/jss/material-dashboard-react/components/headerLinksSt
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbarLinks() {
-  const isLogedUser = true;
+  const userData = useRecoilValue(userDataAtom);
+  const isLogedUser = !!userData.token;
   const classes = useStyles();
   const [openNotification, setOpenNotification] = React.useState(null);
   const [openProfile, setOpenProfile] = React.useState(null);

@@ -1,4 +1,7 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { userObjectState as userDataAtom } from "../../atoms/atoms";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -21,7 +24,7 @@ const styles = {
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardTitleWhite: {
     color: "#FFFFFF",
@@ -30,13 +33,16 @@ const styles = {
     fontWeight: "300",
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
-    textDecoration: "none"
-  }
+    textDecoration: "none",
+  },
 };
 
 const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
+  const userData = useRecoilValue(userDataAtom);
+  console.log(userData);
+
   const classes = useStyles();
   return (
     <div>
@@ -54,10 +60,10 @@ export default function UserProfile() {
                     labelText="Company (disabled)"
                     id="company-disabled"
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                     inputProps={{
-                      disabled: true
+                      disabled: true,
                     }}
                   />
                 </GridItem>
@@ -65,8 +71,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Username"
                     id="username"
+                    defaultValue={userData.userName}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -74,8 +81,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Email address"
                     id="email-address"
+                    defaultValue={userData.email}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -85,8 +93,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="First Name"
                     id="first-name"
+                    defaultValue={userData.firstName}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -94,8 +103,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Last Name"
                     id="last-name"
+                    defaultValue={userData.lastName}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -105,8 +115,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="City"
                     id="city"
+                    defaultValue={userData.city}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -114,8 +125,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Country"
                     id="country"
+                    defaultValue={userData.country}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -123,8 +135,9 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Postal Code"
                     id="postal-code"
+                    defaultValue={userData.postalCode}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>
@@ -135,12 +148,13 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
                     id="about-me"
+                    defaultValue={userData.about}
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
                     }}
                     inputProps={{
                       multiline: true,
-                      rows: 5
+                      rows: 5,
                     }}
                   />
                 </GridItem>
@@ -154,7 +168,7 @@ export default function UserProfile() {
         <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
+              <a href="#pablo" onClick={(e) => e.preventDefault()}>
                 <img src={avatar} alt="..." />
               </a>
             </CardAvatar>

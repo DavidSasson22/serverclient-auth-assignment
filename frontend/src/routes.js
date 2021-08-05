@@ -16,8 +16,7 @@
 
 */
 // @material-ui/icons
-import { useRecoilValue } from "recoil";
-import { userObjectState as userDataAtom } from "./atoms/atoms";
+// import { useRecoilValue } from "recoil";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
@@ -42,21 +41,124 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
 
-const userData = useRecoilValue(userDataAtom);
-const isLogedUser = !!userData.token;
+// export const logInOutDisplayer = (isLogedUser) => {
+//   if (isLogedUser) {
+//     dashboardRoutes.unshift({
+//       path: "/logout",
+//       name: "Log out",
+//       rtlName: "התנתקות",
+//       icon: AssignmentIndIcon,
+//       component: Register,
+//       layout: "/admin",
+//     });
+//   } else {
+//     dashboardRoutes.unshift(
+// {
+//   path: "/register",
+//   name: "Register",
+//   rtlName: "הרשמה",
+//   icon: AssignmentIndIcon,
+//   component: Register,
+//   layout: "/admin",
+// },
+// {
+//   path: "/login",
+//   name: "Login",
+//   rtlName: "התחברות",
+//   icon: VpnKeyIcon,
+//   component: Login,
+//   layout: "/admin",
+// }
+//     );
+//   }
+// };
 
-const logInOutDisplayer = () => {
+export const logInOutDisplayer = (isLogedUser) => {
   if (isLogedUser) {
-    dashboardRoutes.unshift({
-      path: "/logout",
-      name: "Log out",
-      rtlName: "התנתקות",
-      icon: AssignmentIndIcon,
-      component: Register,
-      layout: "/admin",
-    });
+    dashboardRoutes = [
+      {
+        path: "/logout",
+        name: "Log out",
+        rtlName: "התנתקות",
+        icon: AssignmentIndIcon,
+        component: Register,
+        layout: "/admin",
+      },
+      {
+        path: "/dashboard",
+        name: "Dashboard",
+        rtlName: "لوحة القيادة",
+        icon: Dashboard,
+        component: DashboardPage,
+        layout: "/admin",
+      },
+      {
+        path: "/user",
+        name: "User Profile",
+        rtlName: "ملف تعريفي للمستخدم",
+        icon: Person,
+        component: UserProfile,
+        layout: "/admin",
+      },
+      {
+        path: "/table",
+        name: "Table List",
+        rtlName: "قائمة الجدول",
+        icon: "content_paste",
+        component: TableList,
+        layout: "/admin",
+      },
+      {
+        path: "/typography",
+        name: "Typography",
+        rtlName: "طباعة",
+        icon: LibraryBooks,
+        component: Typography,
+        layout: "/admin",
+      },
+      {
+        path: "/icons",
+        name: "Icons",
+        rtlName: "الرموز",
+        icon: BubbleChart,
+        component: Icons,
+        layout: "/admin",
+      },
+      {
+        path: "/maps",
+        name: "Maps",
+        rtlName: "خرائط",
+        icon: LocationOn,
+        component: Maps,
+        layout: "/admin",
+      },
+      {
+        path: "/notifications",
+        name: "Notifications",
+        rtlName: "إخطارات",
+        icon: Notifications,
+        component: NotificationsPage,
+        layout: "/admin",
+      },
+      {
+        path: "/rtl-page",
+        name: "RTL Support",
+        rtlName: "پشتیبانی از راست به چپ",
+        icon: Language,
+        component: RTLPage,
+        layout: "/rtl",
+      },
+      {
+        path: "/upgrade-to-pro",
+        name: "Upgrade To PRO",
+        rtlName: "التطور للاحترافية",
+        icon: Unarchive,
+        component: UpgradeToPro,
+        layout: "/admin",
+      },
+    ];
   } else {
-    dashboardRoutes.unshift(
+    dashboardRoutes = [
       {
         path: "/register",
         name: "Register",
@@ -72,12 +174,84 @@ const logInOutDisplayer = () => {
         icon: VpnKeyIcon,
         component: Login,
         layout: "/admin",
-      }
-    );
+      },
+      {
+        path: "/dashboard",
+        name: "Dashboard",
+        rtlName: "لوحة القيادة",
+        icon: Dashboard,
+        component: DashboardPage,
+        layout: "/admin",
+      },
+      {
+        path: "/user",
+        name: "User Profile",
+        rtlName: "ملف تعريفي للمستخدم",
+        icon: Person,
+        component: UserProfile,
+        layout: "/admin",
+      },
+      {
+        path: "/table",
+        name: "Table List",
+        rtlName: "قائمة الجدول",
+        icon: "content_paste",
+        component: TableList,
+        layout: "/admin",
+      },
+      {
+        path: "/typography",
+        name: "Typography",
+        rtlName: "طباعة",
+        icon: LibraryBooks,
+        component: Typography,
+        layout: "/admin",
+      },
+      {
+        path: "/icons",
+        name: "Icons",
+        rtlName: "الرموز",
+        icon: BubbleChart,
+        component: Icons,
+        layout: "/admin",
+      },
+      {
+        path: "/maps",
+        name: "Maps",
+        rtlName: "خرائط",
+        icon: LocationOn,
+        component: Maps,
+        layout: "/admin",
+      },
+      {
+        path: "/notifications",
+        name: "Notifications",
+        rtlName: "إخطارات",
+        icon: Notifications,
+        component: NotificationsPage,
+        layout: "/admin",
+      },
+      {
+        path: "/rtl-page",
+        name: "RTL Support",
+        rtlName: "پشتیبانی از راست به چپ",
+        icon: Language,
+        component: RTLPage,
+        layout: "/rtl",
+      },
+      {
+        path: "/upgrade-to-pro",
+        name: "Upgrade To PRO",
+        rtlName: "التطور للاحترافية",
+        icon: Unarchive,
+        component: UpgradeToPro,
+        layout: "/admin",
+      },
+    ];
   }
 };
 
-const dashboardRoutes = [
+export let dashboardRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -151,7 +325,5 @@ const dashboardRoutes = [
     layout: "/admin",
   },
 ];
-
-logInOutDisplayer();
 
 export default dashboardRoutes;

@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userObjectState as userDataAtom } from "../atoms/atoms.js";
+
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -11,7 +14,8 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
+// import routes from "routes.js";
+import { dashboardRoutes, logInOutDisplayer } from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
@@ -20,27 +24,34 @@ import logo from "assets/img/reactlogo.png";
 
 let ps;
 
-const switchRoutes = (
-  <Switch>
-    {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
-      }
-      return null;
-    })}
-    <Redirect from="/admin" to="/admin/dashboard" />
-  </Switch>
-);
-
 const useStyles = makeStyles(styles);
 
 export default function Admin({ ...rest }) {
+  const userData = useRecoilValue(userDataAtom);
+  const isLogedUser = !!userData.token;
+
+  useEffect(() => {
+    logInOutDisplayer(isLogedUser);
+  }, [isLogedUser]);
+
+  // logInOutDisplayer(isLogedUser);
+  const switchRoutes = (
+    <Switch>
+      {dashboardRoutes.map((prop, key) => {
+        if (prop.layout === "/admin") {
+          return (
+            <Route
+              path={prop.layout + prop.path}
+              component={prop.component}
+              key={key}
+            />
+          );
+        }
+        return null;
+      })}
+      <Redirect from="/admin" to="/admin/dashboard" />
+    </Switch>
+  );
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -95,7 +106,7 @@ export default function Admin({ ...rest }) {
   return (
     <div className={classes.wrapper}>
       <Sidebar
-        routes={routes}
+        routes={dashboardRoutes}
         logoText={"Creative Tim"}
         logo={logo}
         image={image}
@@ -106,7 +117,7 @@ export default function Admin({ ...rest }) {
       />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
-          routes={routes}
+          routes={dashboardRoutes}
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />

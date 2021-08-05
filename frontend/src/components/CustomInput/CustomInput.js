@@ -29,6 +29,7 @@ export default function CustomInput(props) {
     onChange,
     required,
     minLength,
+    defaultValue,
   } = props;
 
   const labelClasses = classNames({
@@ -63,6 +64,7 @@ export default function CustomInput(props) {
         value={value}
         minLength={minLength}
         onChange={onChange}
+        defaultValue={defaultValue}
         classes={{
           root: marginTop,
           disabled: classes.disabled,
