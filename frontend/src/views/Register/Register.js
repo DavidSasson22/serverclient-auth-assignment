@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -42,6 +45,8 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Register() {
+  let history = useHistory();
+
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
   const [email, setEmail] = useState("");
@@ -72,6 +77,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(false);
     try {
       const token = await axios.post(
         "http://localhost:5000/api/users/register",
@@ -89,7 +95,9 @@ export default function Register() {
       );
       setLoading(false);
       console.log(token);
+      history.push("http://localhost:3000/admin/dashboard");
     } catch (e) {
+      setLoading(false);
       setError(true);
       console.log(e);
     }
