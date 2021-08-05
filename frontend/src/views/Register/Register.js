@@ -228,7 +228,7 @@ export default function Register() {
                       labelText="Password"
                       id="password"
                       type="password"
-                      minlength="7"
+                      minLength="7"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       formControlProps={{
@@ -242,7 +242,7 @@ export default function Register() {
                       labelText="Verify Password"
                       id="verifyPassword"
                       type="password"
-                      minlength="7"
+                      minLength="7"
                       value={passwordVerify}
                       onChange={(e) => setPasswordVerify(e.target.value)}
                       formControlProps={{
@@ -278,6 +278,7 @@ export default function Register() {
                     </InputLabel>
                     <CustomInput
                       labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+                      required
                       id="about-me"
                       value={about}
                       onChange={(e) => setAbout(e.target.value)}
@@ -297,13 +298,28 @@ export default function Register() {
                   <Button color="primary" type="submit">
                     register
                   </Button>
-                  {!loading && (
+                  {loading && (
                     <div
                       style={{
                         marginLeft: "32px",
                       }}
                     >
                       <Loader />
+                    </div>
+                  )}
+                  {error && (
+                    <div
+                      style={{
+                        backgroundColor: "red",
+                        marginLeft: "32px",
+                        padding: "16px",
+                      }}
+                    >
+                      <p style={{ color: "white" }}>
+                        Somthing went wrong... Password must contain at least
+                        one uppercase character one lowercase character one
+                        symbole and one number{" "}
+                      </p>
                     </div>
                   )}
                 </div>
