@@ -40,23 +40,40 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
 
+const isLogedUser = false;
+const logInOutDisplayer = () => {
+  if (isLogedUser) {
+    dashboardRoutes.unshift({
+      path: "/logout",
+      name: "Log out",
+      rtlName: "התנתקות",
+      icon: AssignmentIndIcon,
+      component: Register,
+      layout: "/admin",
+    });
+  } else {
+    dashboardRoutes.unshift(
+      {
+        path: "/register",
+        name: "Register",
+        rtlName: "הרשמה",
+        icon: AssignmentIndIcon,
+        component: Register,
+        layout: "/admin",
+      },
+      {
+        path: "/login",
+        name: "Login",
+        rtlName: "התחברות",
+        icon: VpnKeyIcon,
+        component: Login,
+        layout: "/admin",
+      }
+    );
+  }
+};
+
 const dashboardRoutes = [
-  {
-    path: "/register",
-    name: "Register",
-    rtlName: "הרשמה",
-    icon: AssignmentIndIcon,
-    component: Register,
-    layout: "/admin",
-  },
-  {
-    path: "/login",
-    name: "Login",
-    rtlName: "התחברות",
-    icon: VpnKeyIcon,
-    component: Login,
-    layout: "/admin",
-  },
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -130,5 +147,7 @@ const dashboardRoutes = [
     layout: "/admin",
   },
 ];
+
+logInOutDisplayer();
 
 export default dashboardRoutes;
