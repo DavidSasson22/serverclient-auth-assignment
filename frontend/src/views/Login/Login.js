@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -12,6 +14,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import Loader from "components/Loader/Loader.js";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -39,11 +42,30 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Login() {
-  const [password, setPassword] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  let history = useHistory();
 
-  const handleSubmit = (e) => {
+  const [password, setPassword] = useState("");
+  const [email, setUserEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(false);
+    try {
+      const token = await axios.post("http://localhost:5000/api/users/login", {
+        email,
+        password,
+      });
+      setLoading(false);
+      console.log(token);
+      history.push("http://localhost:3000/admin/dashboard");
+    } catch (e) {
+      setLoading(false);
+      setError(true);
+      console.log(e);
+    }
   };
 
   const classes = useStyles();
@@ -65,7 +87,7 @@ export default function Login() {
                       labelText="Email address"
                       id="email-address"
                       type="email"
-                      value={userEmail}
+                      value={email}
                       onChange={(e) => setUserEmail(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
@@ -90,9 +112,33 @@ export default function Login() {
                 </GridContainer>
               </CardBody>
               <CardFooter>
-                <Button color="primary" type="submit">
-                  log in
-                </Button>
+                <div style={{ display: "flex" }}>
+                  <Button color="primary" type="submit">
+                    log in
+                  </Button>
+                  {loading && (
+                    <div
+                      style={{
+                        marginLeft: "32px",
+                      }}
+                    >
+                      <Loader />
+                    </div>
+                  )}
+                  {error && (
+                    <div
+                      style={{
+                        backgroundColor: "red",
+                        marginLeft: "32px",
+                        padding: "16px",
+                      }}
+                    >
+                      <p style={{ color: "white" }}>
+                        Incorrect user name or password
+                      </p>
+                    </div>
+                  )}
+                </div>
               </CardFooter>
             </Card>
           </form>
