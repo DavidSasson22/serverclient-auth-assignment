@@ -62,7 +62,7 @@ export default function Register() {
   const [about, setAbout] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [userData, setUserData] = useRecoilState(userObjectState);
+  const [, setUserData] = useRecoilState(userObjectState);
 
   const passwordMatch = () => {
     return password === passwordVerify;

@@ -30,11 +30,7 @@ export default function Admin({ ...rest }) {
   const userData = useRecoilValue(userDataAtom);
   const isLogedUser = !!userData.token;
 
-  useEffect(() => {
-    logInOutDisplayer(isLogedUser);
-  }, [isLogedUser]);
-
-  // logInOutDisplayer(isLogedUser);
+  logInOutDisplayer(isLogedUser);
   const switchRoutes = (
     <Switch>
       {dashboardRoutes.map((prop, key) => {

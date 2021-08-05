@@ -50,7 +50,7 @@ export default function Login() {
   const [email, setUserEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [userData, setUserData] = useRecoilState(userObjectState);
+  const [, setUserData] = useRecoilState(userObjectState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
