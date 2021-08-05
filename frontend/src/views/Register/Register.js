@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userObjectState } from "../../atoms/atoms.js";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -60,6 +62,7 @@ export default function Register() {
   const [about, setAbout] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [userData, setUserData] = useRecoilState(userObjectState);
 
   const passwordMatch = () => {
     return password === passwordVerify;
@@ -80,7 +83,7 @@ export default function Register() {
     setLoading(true);
     setError(false);
     try {
-      const token = await axios.post(
+      const data = await axios.post(
         "http://localhost:5000/api/users/register",
         {
           userName,
@@ -95,7 +98,20 @@ export default function Register() {
         }
       );
       setLoading(false);
-      console.log(token);
+      console.log("data:");
+      console.log(data.data);
+      setUserData({
+        userName: data.data.user.userName,
+        firstName: data.data.user.firstName,
+        lastName: data.data.user.lastName,
+        city: data.data.user.city,
+        country: data.data.user.country,
+        postalCode: data.data.user.postalCode,
+        email: data.data.user.email,
+        about: data.data.user.about,
+        token: data.data.token,
+      });
+
       history.push("http://localhost:3000/admin/dashboard");
     } catch (e) {
       setLoading(false);
