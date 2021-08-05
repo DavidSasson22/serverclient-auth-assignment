@@ -16,6 +16,8 @@
 
 */
 // @material-ui/icons
+import { useRecoilValue } from "recoil";
+import { userObjectState as userDataAtom } from "./atoms/atoms";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
@@ -40,7 +42,9 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
 
-const isLogedUser = false;
+const userData = useRecoilValue(userDataAtom);
+const isLogedUser = !!userData.token;
+
 const logInOutDisplayer = () => {
   if (isLogedUser) {
     dashboardRoutes.unshift({
