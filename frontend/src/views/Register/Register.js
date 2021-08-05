@@ -22,6 +22,7 @@ import avatar from "assets/img/faces/marc.jpg";
 //icons
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
+import Loader from "components/Loader/Loader";
 
 const styles = {
   cardCategoryWhite: {
@@ -292,9 +293,20 @@ export default function Register() {
                 </GridContainer>
               </CardBody>
               <CardFooter>
-                <Button color="primary" type="submit">
-                  register
-                </Button>
+                <div style={{ display: "flex" }}>
+                  <Button color="primary" type="submit">
+                    register
+                  </Button>
+                  {!loading && (
+                    <div
+                      style={{
+                        marginLeft: "32px",
+                      }}
+                    >
+                      <Loader />
+                    </div>
+                  )}
+                </div>
               </CardFooter>
             </Card>
           </form>
