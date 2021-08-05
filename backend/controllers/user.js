@@ -64,6 +64,7 @@ const updateUser = async (req, res) => {
     "isActive",
     "email",
     `password`,
+    "about",
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)

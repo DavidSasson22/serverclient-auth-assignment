@@ -77,6 +77,12 @@ const userSchema = mongoose.Schema({
     },
   },
 
+  about: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+
   joinedAt: {
     type: Date,
     default: Date.now,

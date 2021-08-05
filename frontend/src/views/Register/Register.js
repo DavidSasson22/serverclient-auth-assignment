@@ -50,8 +50,10 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [postal, setPostal] = useState("");
+  const [postalCode, setPostal] = useState("");
   const [about, setAbout] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const passwordMatch = () => {
     return password === passwordVerify;
@@ -67,8 +69,30 @@ export default function Register() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      const token = await axios.post(
+        "http://localhost:5000/api/users/register",
+        {
+          userName,
+          firstName,
+          lastName,
+          city,
+          country,
+          postalCode,
+          email,
+          password,
+          about,
+        }
+      );
+      setLoading(false);
+      console.log(token);
+    } catch (e) {
+      setError(true);
+      console.log(e);
+    }
   };
 
   const classes = useStyles();
@@ -180,7 +204,7 @@ export default function Register() {
                       required
                       labelText="Postal Code"
                       id="postal-code"
-                      value={postal}
+                      value={postalCode}
                       onChange={(e) => setPostal(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
