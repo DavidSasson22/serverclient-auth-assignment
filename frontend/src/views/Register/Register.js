@@ -44,6 +44,14 @@ const useStyles = makeStyles(styles);
 export default function Register() {
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [postal, setPostal] = useState("");
+  const [about, setAbout] = useState("");
 
   const passwordMatch = () => {
     return password === passwordVerify;
@@ -95,6 +103,8 @@ export default function Register() {
                       required
                       labelText="Username"
                       id="username"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -106,6 +116,8 @@ export default function Register() {
                       labelText="Email address"
                       id="email-address"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -118,6 +130,8 @@ export default function Register() {
                       required
                       labelText="First Name"
                       id="first-name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -128,6 +142,8 @@ export default function Register() {
                       required
                       labelText="Last Name"
                       id="last-name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -140,6 +156,8 @@ export default function Register() {
                       required
                       labelText="City"
                       id="city"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -150,6 +168,8 @@ export default function Register() {
                       required
                       labelText="Country"
                       id="country"
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -160,6 +180,8 @@ export default function Register() {
                       required
                       labelText="Postal Code"
                       id="postal-code"
+                      value={postal}
+                      onChange={(e) => setPostal(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -222,6 +244,8 @@ export default function Register() {
                     <CustomInput
                       labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
                       id="about-me"
+                      value={about}
+                      onChange={(e) => setAbout(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
