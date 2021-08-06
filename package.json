@@ -1,0 +1,11 @@
+{"scripts": {
+  "client": "cd frontend && yarn start",
+  "server": "cd backend && nodemon index.js",
+  "build": "cd frontend && npm run build",
+  "dev": "concurrently --kill-others-on-fail \"yarn backend\" \"yarn frontend\"",
+  "start": "cd backend && node index.js",
+  "heroku-postbuild": "cd frontend && npm install && cd backend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+}
+}
+
+

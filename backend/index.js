@@ -15,4 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/users", userRouter);
 
+app.use(express.static(path.join(__dirname, "../front/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../front/build", "index.html"));
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
