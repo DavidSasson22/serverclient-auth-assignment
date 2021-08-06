@@ -1,12 +1,7 @@
 {
-  "name": "example-create-react-app-express",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Example on using create-react-app with a Node Express Backend",
-  "author": {
-    "name": "Esau Silva",
-    "twitter": "@_esausilva",
-    "url": "https://esausilva.com"
-  },
+  "author": "",
   "license": "MIT",
   "scripts": {
     "client": "cd frontend && yarn start",
