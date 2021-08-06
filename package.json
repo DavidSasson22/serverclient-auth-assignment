@@ -1,11 +1,46 @@
-{"scripts": {
-  "client": "cd frontend && npm start",
-  "server": "cd backend && nodemon index.js",
-  "build": "cd frontend && npm run build",
-  "dev": "concurrently --kill-others-on-fail \"yarn backend\" \"yarn frontend\"",
-  "start": "cd backend && node index.js && cd ../frontend && react-scripts start",
-  "heroku-postbuild": "cd frontend && npm install && cd ../backend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+{
+  "name": "example-create-react-app-express",
+  "version": "1.0.0",
+  "description": "Example on using create-react-app with a Node Express Backend",
+  "author": {
+    "name": "Esau Silva",
+    "twitter": "@_esausilva",
+    "url": "https://esausilva.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "client": "cd frontend && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn frontend\"",
+    "dev:server": "cd frontend && yarn build && cd .. && yarn start",
+    "start": "nodemon server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv-extended": "^2.9.0",
+    "env": "0.0.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.7",
+    "nodemon": "^2.0.7",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esausilva/example-create-react-app-express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esausilva/example-create-react-app-express/issues"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "create-react-app"
+  ]
 }
-}
-
-
