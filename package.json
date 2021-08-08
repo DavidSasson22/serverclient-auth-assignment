@@ -1,16 +1,20 @@
 {
-  "name": "backend",
+  "name": "example-create-react-app-express",
   "version": "1.0.0",
-  "author": "",
+  "description": "Example on using create-react-app with a Node Express Backend",
+  "author": {
+    "name": "Esau Silva",
+    "twitter": "@_esausilva",
+    "url": "https://esausilva.com"
+  },
   "license": "MIT",
-  "homepage": ".",
   "scripts": {
-    "client": "cd frontend && yarn start",
+    "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn frontend\"",
-    "dev:server": "cd frontend && yarn build && cd .. && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
     "start": "nodemon server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
