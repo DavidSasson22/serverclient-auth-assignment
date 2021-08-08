@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userObjectState as userDataAtom } from "../atoms/atoms.js";
@@ -15,12 +15,21 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 // import routes from "routes.js";
-import { dashboardRoutes, logInOutDisplayer } from "routes.js";
+import dashboardRoutes0 from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
+
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+
+// core components/views for Admin layout
+
+import Register from "views/Register/Register.js";
+import Login from "views/Login/Login.js";
+import LogOut from "views/Logout/LogOut.js";
 
 let ps;
 
@@ -28,9 +37,41 @@ const useStyles = makeStyles(styles);
 
 export default function Admin({ ...rest }) {
   const userData = useRecoilValue(userDataAtom);
+  let dashboardRoutes = [...dashboardRoutes0];
   const isLogedUser = !!userData.token;
 
-  logInOutDisplayer(isLogedUser);
+  if (isLogedUser) {
+    dashboardRoutes[0].path !== "/logout" &&
+      dashboardRoutes.unshift({
+        path: "/logout",
+        name: "Log out",
+        rtlName: "התנתקות",
+        icon: AssignmentIndIcon,
+        component: LogOut,
+        layout: "/admin",
+      });
+  } else {
+    dashboardRoutes[0].path !== "/register" &&
+      dashboardRoutes.unshift(
+        {
+          path: "/register",
+          name: "Register",
+          rtlName: "הרשמה",
+          icon: AssignmentIndIcon,
+          component: Register,
+          layout: "/admin",
+        },
+        {
+          path: "/login",
+          name: "Login",
+          rtlName: "התחברות",
+          icon: VpnKeyIcon,
+          component: Login,
+          layout: "/admin",
+        }
+      );
+  }
+
   const switchRoutes = (
     <Switch>
       {dashboardRoutes.map((prop, key) => {
