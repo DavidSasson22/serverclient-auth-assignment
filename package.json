@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "",
   "license": "MIT",
+  "homepage": ".",
   "scripts": {
     "client": "cd frontend && yarn start",
     "server": "nodemon server.js",
